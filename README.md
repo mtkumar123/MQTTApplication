@@ -10,8 +10,9 @@ In order to launch application follow these steps:
 ## Viewing Messages Published ##
 
 In order to use the REST API endpoint to view messages published and stored in MongoDB follow these steps:
-  - Navigate to **localhost:80/docs** in a browser to view the FastAPI Swagger docs
+  - Navigate to **[localhost/docs](http://localhost/docs)** in a browser to view the FastAPI Swagger docs
   - Try out the GET /messages endpoint
+  - You can also use the following command ```curl -X GET http://localhost/messages```
 
 ## Viewing MQTT Client Logs ##
 
