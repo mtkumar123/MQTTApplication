@@ -1,6 +1,6 @@
 from typing import TypedDict
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class PayloadDictType(TypedDict):
@@ -17,10 +17,15 @@ class MessageDictType(TypedDict):
 
 
 class Payload(BaseModel):
-    session_id: int
-    energy_delivered_kwh: int
-    duration_seconds: int
-    cost_cents: int
+    """
+    Model used for API Response for
+    payload found in published message
+    """
+
+    session_id: int = Field(description="Session ID")
+    energy_delivered_kwh: int = Field(description="Energy Delivered in KWh")
+    duration_seconds: int = Field(description="Duration in seconds")
+    cost_cents: int = Field(description="Cost in cents")
 
 
 class Message(BaseModel):
