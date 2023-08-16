@@ -4,6 +4,10 @@ from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
+    """
+    Read in environment variables
+    """
+
     mongo_db_url: str
     mongo_db_port: int
     db_name: str

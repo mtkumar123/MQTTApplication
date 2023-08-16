@@ -11,6 +11,10 @@ settings = config.get_settings()
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    """Manage DB Connection opening and closing
+
+    :param FastAPI app
+    """
     app.state.db_conn = MongoClient(
         host=settings.mongo_db_url, port=settings.mongo_db_port
     )

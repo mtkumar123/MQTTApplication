@@ -4,6 +4,10 @@ from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
+    """
+    Read in environment variables
+    """
+
     mqtt_broker_url: str
     mqtt_broker_port: int
     mongo_db_url: str

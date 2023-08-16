@@ -9,4 +9,8 @@ db_conn = MongoClient(host=settings.mongo_db_url, port=settings.mongo_db_port)
 
 
 def insert_document(document: models.Message) -> None:
+    """Insert message to db
+
+    :param models.Message document
+    """
     db_conn[db_name][collection_name].insert_one(document.model_dump())
