@@ -1,16 +1,20 @@
-import config
 import models
+from logger import mqtt_logger
 from pymongo import MongoClient
-
-settings = config.get_settings()
-db_name = settings.db_name
-collection_name = settings.collection_name
-db_conn = MongoClient(host=settings.mongo_db_url, port=settings.mongo_db_port)
+from pymongo.errors import PyMongoError
 
 
-def insert_document(document: models.Message) -> None:
+def insert_document(
+    db_conn: MongoClient,
+    db_name: str,
+    db_collection: str,
+    document: models.Message,
+) -> None:
     """Insert message to db
 
     :param models.Message document
     """
-    db_conn[db_name][collection_name].insert_one(document.model_dump())
+    try:
+        db_conn[db_name][db_collection].insert_one(document.model_dump())
+    except PyMongoError:
+        mqtt_logger.exception("Unable insert document to MongoDB")

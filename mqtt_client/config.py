@@ -14,6 +14,8 @@ class Settings(BaseSettings):
     mongo_db_port: int
     db_name: str
     collection_name: str
+    topic: str = "charger/1/connector/1/session/1"
+    client_id: str = "Client1"
 
 
 @lru_cache
