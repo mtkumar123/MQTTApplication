@@ -23,7 +23,9 @@ def _get_logger() -> logging.Logger:
 logger = _get_logger()
 
 
-def on_connect(client: mqtt.Client, userdata, flags: dict, rc: int) -> None:
+def on_connect(
+    client: mqtt.Client, userdata: dict, flags: dict, rc: int
+) -> None:
     """Callback function after connection to broker is completed.
 
     :param mqtt.Client client
@@ -34,7 +36,7 @@ def on_connect(client: mqtt.Client, userdata, flags: dict, rc: int) -> None:
     logger.info(f"{userdata['client_id']} has connected to broker")
 
 
-def on_disconnect(client: mqtt.Client, userdata, rc) -> None:
+def on_disconnect(client: mqtt.Client, userdata: dict, rc: int) -> None:
     """Callback function when connection to broker is lost.
 
     :param mqtt.Client client

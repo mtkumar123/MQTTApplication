@@ -3,7 +3,7 @@ from random import randint
 from pydantic import BaseModel, Field
 
 
-def _get_random_int():
+def _get_random_int() -> int:
     return randint(0, 100)
 
 

@@ -1,8 +1,9 @@
 import crud
 import models
+from pymongo import MongoClient
 
 
-def get_all_messages(db_conn) -> list[models.Message]:
+def get_all_messages(db_conn: MongoClient) -> list[models.Message]:
     """Get all messages from crud layer
 
     :param _type_ db_conn
