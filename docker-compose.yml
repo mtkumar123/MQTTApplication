@@ -1,0 +1,41 @@
+x-shared-environment: &shared-environment
+  MONGO_DB_URL: ${MONGO_DB_URL}
+  MONGO_DB_PORT: ${MONGO_DB_PORT}
+  DB_NAME: ${DB_NAME}
+  COLLECTION_NAME: ${COLLECTION_NAME}
+
+services:
+  api_service:
+    build: ./api_service
+    environment:
+      <<: *shared-environment
+    ports:
+      - 80:80
+    volumes:
+      - ./api_service:/code
+    depends_on:
+      - mongodb
+  mqtt_client:
+    build: ./mqtt_client
+    environment:
+      <<: *shared-environment
+      MQTT_BROKER_URL: ${MQTT_BROKER_URL}
+      MQTT_BROKER_PORT: ${MQTT_BROKER_PORT}
+    depends_on:
+      - mosquitto
+      - mongodb
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    volumes:
+      - ./mosquitto/config:/mosquitto/config
+    ports:
+      - 1883:1883
+  mongodb:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    volumes:
+      - dbdata:/data/db
+
+volumes:
+  dbdata:
