@@ -37,3 +37,8 @@ Database service to store the published messages
 **mosquitto**
 
 MQTT Broker service
+
+### Enhancements ###
+- Pagination (skip, limit) for the GET /messages endpoint
+- Add testing
+- Add query filters to GET /messages endpoint to be able to get messages that meet certain criteria (e.g cost_cents more than a certain value)
