@@ -22,13 +22,17 @@ In order to view the MQTT Client Logs either docker attach to the mqtt_client se
 ### Services ###
 
 **api_service**
+
 FastAPI service with the GET /messages endpoint. The endpoint reads all the published messages for the topic which is stored in MongoDB and returns those messages to the user
 
 **mqtt_client**
+
 The client application which subscribes to the topic charger/1/connector/1/session/1, and publishes messages to that topic as well. Messages are published every 2 seconds. The on_message callback is used in the application to receive a published message and store it in MongoDB. 
 
 **mongodb**
+
 Database service to store the published messages
 
 **mosquitto**
+
 MQTT Broker service
