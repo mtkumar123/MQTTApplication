@@ -21,6 +21,7 @@ services:
       <<: *shared-environment
       MQTT_BROKER_URL: ${MQTT_BROKER_URL}
       MQTT_BROKER_PORT: ${MQTT_BROKER_PORT}
+      PUBLISH_INTERVAL: ${PUBLISH_INTERVAL:-5}
     depends_on:
       - mosquitto
       - mongodb

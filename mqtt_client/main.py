@@ -33,7 +33,7 @@ def main() -> None:
                 topic=settings.topic,
                 payload=payload.model_dump_json(),
             )
-            time.sleep(2)
+            time.sleep(settings.publish_interval)
 
 
 if __name__ == "__main__":
