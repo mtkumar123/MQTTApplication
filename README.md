@@ -31,7 +31,7 @@ FastAPI service with the GET /messages endpoint. The endpoint reads all the publ
 
 **mqtt_client**
 
-The client application which subscribes to the topic charger/1/connector/1/session/1, and publishes messages to that topic as well. Messages are published every 2 seconds. The on_message callback is used in the application to receive a published message and store it in MongoDB.
+The client application which subscribes to the topic charger/1/connector/1/session/1, and publishes messages to that topic as well. Messages are published every PUBLISH_INTERVAL. The on_message callback is used in the application to receive a published message and store it in MongoDB.
 
 **mongodb**
 
